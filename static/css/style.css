@@ -1,0 +1,20 @@
+body{
+    font-family: sans-serif;
+    background:  #ccfff2;
+    text-align: center;
+}
+
+#logo{
+    width: 100%;
+    margin:auto;
+    padding:auto;
+    padding-bottom: 20px;
+}
+
+#container{
+    width: 360px;
+    background: white;
+    margin:180px auto;
+    padding: 30px 20px;
+    border-radius: 6px;
+}
