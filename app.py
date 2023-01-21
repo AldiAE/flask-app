@@ -76,31 +76,6 @@ def hapus(id_barang):
    conn.commit()
    closeDb()
    return redirect(url_for('index'))
-
-#fungsi odoo xml-rpc
-def call_odoo_method(url, db, username, password, model, method, *args):
-   # Authenticate
-   common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
-   uid = common.authenticate(db, username, password, {})
-
-   # Call the method
-   models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
-   result = models.execute_kw(db, uid, password, model, method, args)
-   return result
-
-@application.route('/odooapi',methods=['GET','POST'])
-def odooapi():
-   # client =  Client(host='https://fastprintid.odoo.com',
-   #          dbname='fastprintid-sandyhartono-master-1221888',
-   #          user='prog4.fastprintsby@gmail.com',
-   #          pwd='odoo13')
-   # from xmlrpc.server import xmlrpclib
-   url = 'https://fastprintid.odoo.com',
-   db = 'fastprintid-sandyhartono-master-1221888',
-   username = 'prog4.fastprintsby@gmail.com',
-   password = 'odoo13'
-   partners = call_odoo_method(url, db, username, password, 'res.partner', 'search', [[]])
-   print(partners)
       
 if __name__ == '__main__':
    application.run(debug=True)
